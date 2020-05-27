@@ -4,6 +4,7 @@ import TableView from './table-view/table-view.component';
 
 function App() {
   const [fileContents, setFileContents] = useState('')
+  const [filterTimer, setFilterTimer] = useState(null)
   const [filter, setFilters] = useState({
     delimiter: ',',
     lines: 2
@@ -49,7 +50,15 @@ function App() {
   }
 
   const handleFiltersChange = (e) => {
-    setFilters({...filter, [e.target.name]: e.target.value})
+    const name = e.target.name
+    const value = e.target.value
+    if (filterTimer) {
+      clearTimeout(filterTimer)
+    }
+    const timer = setTimeout(() => {
+      setFilters({...filter, [name]: value})
+    }, 1000)
+    setFilterTimer(timer)
   }
 
   return (
@@ -69,11 +78,11 @@ function App() {
       <div className='filters-wrapper'>
         <div className='delimiter-wrapper'>
           <div className='label'>Delimiter</div>
-          <input onChange={handleFiltersChange} name='delimiter' className='filter-input' value={filter.delimiter} />
+          <input onChange={handleFiltersChange} name='delimiter' className='filter-input' defaultValue={filter.delimiter} />
         </div>
         <div className='lines-wrapper'>
           <div className='label'>Lines</div>
-          <input onChange={handleFiltersChange} name='lines' className='filter-input' value={filter.lines} />
+          <input onChange={handleFiltersChange} name='lines' className='filter-input' defaultValue={filter.lines} />
         </div>
       </div>
       {
