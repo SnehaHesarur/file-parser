@@ -33,6 +33,7 @@ function App() {
     .then((res) => {
       setFileContents(res.data.split('\n'))
     })
+    .catch(err => console.log(err))
   }
 
   const handleFileUpload = (e) => {
