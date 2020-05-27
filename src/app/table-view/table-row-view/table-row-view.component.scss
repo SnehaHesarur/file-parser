@@ -1,0 +1,20 @@
+.table-row-wrapper {
+  display: flex;
+  border-bottom: 1px solid darkgrey;
+  &:nth-child(1) {
+    border-top: 1px solid darkgrey;
+  }
+  .row-item {
+    text-align: left;
+    padding: 10px;
+    width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-transform: capitalize;
+    border-right: 1px solid darkgrey;
+    &:nth-child(1) {
+      border-left: 1px solid darkgrey;
+    }
+  }
+}

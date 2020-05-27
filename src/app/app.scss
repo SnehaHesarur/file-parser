@@ -1,0 +1,36 @@
+.main-container {
+  margin: 50px 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.file-upload-input-wrapper {
+  width: 500px;
+  height: 200px;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  border: 1px dashed cadetblue;
+  flex-direction: column;
+  cursor: pointer;
+}
+.input-lable {
+  padding-bottom: 10px;
+  font-size: 14px;
+  color: darkgrey;
+}
+.input {
+  visibility: hidden;
+}
+.filters-wrapper {
+  display: flex;
+  .delimiter-wrapper {
+    margin-right: 20px;
+  }
+  .label {
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+}
