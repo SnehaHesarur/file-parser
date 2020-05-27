@@ -7,11 +7,15 @@ function TableRowView(props) {
 
   useEffect(() => {
     if (rowInfo) {
-      const data = rowInfo || []
+      let data = rowInfo || []
       let length = data.length
-      while (length < 4) {
-        data.push('')
-        length++
+      if (length > 4) {
+        data = data.slice(0, 4)
+      } else {
+        while (length < 4) {
+          data.push('')
+          length++
+        }
       }
       setRowItems(data)
     }
