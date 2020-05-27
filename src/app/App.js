@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './app.scss';
 import TableView from './table-view/table-view.component';
+import FileInput from './file-input/file-input.component';
 
 function App() {
   const [fileContents, setFileContents] = useState('')
@@ -9,15 +10,6 @@ function App() {
     delimiter: ',',
     lines: 2
   })
-
-  const handleOnDragOver = (e) => {
-    e.preventDefault()
-    e.target.classList.add('hover')
-  }
-
-  const handleDragLeave = (e) => {
-    e.target.classList.remove('hover')
-  }
 
   const readFile = (file) => {
     const formData = new FormData()
@@ -36,20 +28,6 @@ function App() {
     .catch(err => console.log(err))
   }
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0]
-    if (file) {
-      readFile(file)
-    }
-  }
-
-  const handleOnDrop = (e) => {
-    e.preventDefault()
-    if (e.dataTransfer.files[0]) {
-      readFile(e.dataTransfer.files[0])
-    } 
-  }
-
   const handleFiltersChange = (e) => {
     const name = e.target.name
     const value = e.target.value
@@ -64,18 +42,7 @@ function App() {
 
   return (
     <div className="main-container">
-      <div>
-        <label
-          onDragOver={handleOnDragOver}
-          onDragLeave={handleDragLeave}
-          onDrop={handleOnDrop}
-          className='file-upload-input-wrapper input-lable'
-          htmlFor='input-file'
-        >
-          Drop / Click to select files to parse
-        </label>
-        <input className='input' id='input-file' onChange={handleFileUpload} type="file" required />
-      </div>
+      <FileInput readFile={readFile} />
       <div className='filters-wrapper'>
         <div className='delimiter-wrapper'>
           <div className='label'>Delimiter</div>

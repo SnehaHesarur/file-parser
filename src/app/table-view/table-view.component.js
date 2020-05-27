@@ -4,6 +4,7 @@ import './table-view.component.scss'
 
 function TableView(props) {
   const { fileContents, filters } = props
+
   return (
     <div className="table-wrapper">
       {
