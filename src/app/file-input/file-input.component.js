@@ -17,6 +17,7 @@ function FileInput(props) {
     e.preventDefault()
     if (e.dataTransfer.files[0]) {
       readFile(e.dataTransfer.files[0])
+      e.dataTransfer.value = ''
     } 
   }
 
@@ -24,6 +25,7 @@ function FileInput(props) {
     const file = e.target.files[0]
     if (file) {
       readFile(file)
+      e.target.value = ''
     }
   }
 
