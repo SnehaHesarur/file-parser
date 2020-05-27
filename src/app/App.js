@@ -57,7 +57,7 @@ function App() {
     }
     const timer = setTimeout(() => {
       setFilters({...filter, [name]: value})
-    }, 1000)
+    }, 600)
     setFilterTimer(timer)
   }
 
